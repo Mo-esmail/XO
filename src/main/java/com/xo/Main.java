@@ -38,7 +38,7 @@ public class Main extends Application {
         btn9=new Button("");
         btnp=new Button("play");
         //initialize the TextField
-        txtResult=new Label();
+        txtResult=new Label("X's turn");
         //set the min sizes for all the components of the gui
         txtResult.setMinSize(100,20);
         btn1.setMinSize(70,25);
@@ -172,7 +172,7 @@ public class Main extends Application {
                 btn9.setText("");
                 gameOver =false;
                 isPlayer1=true;
-                txtResult.setText("");
+                txtResult.setText("X's turn");
             }
         });
 
@@ -185,10 +185,12 @@ public class Main extends Application {
                     isPlayer1=false;
                     current.setText("X");
                     Xplays.set(n,true);
+                    txtResult.setText("O's turn");
                 }else{
                     isPlayer1=true;
                     current.setText("O");
                     Yplays.set(n,true);
+                    txtResult.setText("X's turn");
                 }
                 checkwin();
             }
@@ -214,6 +216,17 @@ public class Main extends Application {
                 Yplays.get(0)&&Yplays.get(4)&&Yplays.get(8)||
                 Yplays.get(2)&&Yplays.get(4)&&Yplays.get(6)){
             txtResult.setText("Y won");
+            gameOver =true;
+        }else if ((Xplays.get(0)||Yplays.get(0))&&
+                (Xplays.get(1)||Yplays.get(1))&&
+                (Xplays.get(2)||Yplays.get(2))&&
+                (Xplays.get(3)||Yplays.get(3))&&
+                (Xplays.get(4)||Yplays.get(4))&&
+                (Xplays.get(5)||Yplays.get(5))&&
+                (Xplays.get(6)||Yplays.get(6))&&
+                (Xplays.get(7)||Yplays.get(7))&&
+                (Xplays.get(8)||Yplays.get(8))){
+            txtResult.setText("Draw");
             gameOver =true;
         }
 
